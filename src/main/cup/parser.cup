@@ -1,0 +1,33 @@
+package squah.lang;
+
+import squah.lang.Compiler.IntExpr;
+import java_cup.runtime.*;
+
+class Parser;
+
+
+parser code {:
+  Scanner s;
+  Parser(Scanner s) { this.s = s; }
+:}
+
+/* define how to connect to the scanner! */
+init with {: s.init(); :};
+scan with {: return s.nextToken(); :};
+
+/* Terminals (tokens returned by the sanner). */
+terminal Integer INT;
+
+/* Non terminal */
+non terminal expr; 
+
+/* Precendences 
+precedence left PLUS, MINUS;
+precedence left TIME;
+precedence left UMINUS;
+*/
+
+/* The grammar rules */
+expr ::= INT:n  {: RESULT = new IntExpr(n); :}
+;
+
