@@ -1,6 +1,7 @@
 package squah.lang;
 
 import java_cup.runtime.Symbol;
+import java.io.FileReader;
 
 public class Compiler {
 
@@ -34,11 +35,26 @@ public class Compiler {
         }
     }
 
-    public static void main(String[] args) throws Exception {
-        Parser p = new Parser(new Scanner(args[0]));
+    public static void printTokens(FileReader r) throws Exception {
+        Lexer l = new Lexer(r);
+        Symbol s = l.next_token();
+        while(s.sym != ParserSym.EOF) {
+            System.out.println(s.value);
+            s = l.next_token();
+        }
+    }
+
+    public static void interp(FileReader r) throws Exception {
+        Parser p = new Parser(r);
         Symbol s = p.parse();
         Expr ast = (Expr)s.value;
         System.out.println(ast.interp());
+    }
+
+    public static void main(String[] args) throws Exception {
+        FileReader r = new FileReader(args[0]);
+    //    printTokens(r);
+        interp(r);
     }
 }
 

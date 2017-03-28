@@ -1,19 +1,20 @@
 package squah.lang;
 
+import java.io.Reader;
 import squah.lang.Compiler.IntExpr;
 import java_cup.runtime.*;
 
 class Parser;
 
-
 parser code {:
-  Scanner s;
-  Parser(Scanner s) { this.s = s; }
+  public Parser(Reader input) {
+    super(new Lexer(input));
+  }
 :}
 
-/* define how to connect to the scanner! */
-init with {: s.init(); :};
-scan with {: return s.nextToken(); :};
+/* define how to connect to the scanner! not needed for JFlex Scanners */
+//init with {: s.init(); :};
+//scan with {: return s.nextToken(); :};
 
 /* Terminals (tokens returned by the sanner). */
 terminal Integer INT;

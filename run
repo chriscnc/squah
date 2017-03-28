@@ -1,2 +1,2 @@
 #!/bin/bash
-java -cp `cat cp.txt`:target/classes squah.lang.Compiler $@
+java -cp `cat cp.txt`:target/classes squah.lang.Compiler src/test/resources/test.sqh

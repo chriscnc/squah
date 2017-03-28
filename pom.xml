@@ -52,7 +52,7 @@
       </plugin>
       -->
       <!-- JFlex -->
-      <!--      <plugin>
+      <plugin>
         <groupId>de.jflex</groupId>
         <artifactId>jflex-maven-plugin</artifactId>
         <version>1.6.0</version>
@@ -65,7 +65,7 @@
             </configuration>
           </execution>
         </executions>
-      </plugin>-->
+      </plugin>
       <!-- Java Cup -->
       <plugin>
         <groupId>com.github.vbmacher</groupId>
@@ -79,9 +79,6 @@
           </execution>
         </executions>
         <configuration>
-          <!--          <className>SquahParser</className>-->
-          <symbolsName>SquahSymbols</symbolsName>
-          <!--<packageName>squah.lang</packageName>-->
           <noScanner>true</noScanner>
         </configuration>
       </plugin>
